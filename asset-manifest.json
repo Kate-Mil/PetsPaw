@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PetsPaw/static/css/main.7acaea2f.css",
+    "main.js": "/PetsPaw/static/js/main.07d3183d.js",
+    "index.html": "/PetsPaw/index.html",
+    "main.7acaea2f.css.map": "/PetsPaw/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/PetsPaw/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
