@@ -1,7 +1,6 @@
 {
   "files": {
-    "main.css": "/PetsPaw/static/css/main.b5320759.css",
-    "main.js": "/PetsPaw/static/js/main.858d3d6e.js",
+    "main.js": "/PetsPaw/static/js/main.6a003d97.js",
     "static/media/girl-and-pet@2x.png": "/PetsPaw/static/media/girl-and-pet@2x.35defef5f0802c240a16.png",
     "static/media/girl-and-pet@1x.png": "/PetsPaw/static/media/girl-and-pet@1x.cd95d53806bd37e1393b.png",
     "static/media/images-search@2x.png": "/PetsPaw/static/media/images-search@2x.f0be45fd188d3d963670.png",
@@ -10,12 +9,11 @@
     "static/media/images-search@1x.png": "/PetsPaw/static/media/images-search@1x.38502ff9b2129cb5170d.png",
     "static/media/vote-table@1x.png": "/PetsPaw/static/media/vote-table@1x.181998f2b63b6c87ae3b.png",
     "static/media/pet-breeds@1x.png": "/PetsPaw/static/media/pet-breeds@1x.3c453e9b5b2a96a32f0e.png",
+    "static/media/sprite.svg": "/PetsPaw/static/media/sprite.73cabe02bbe8a41e10e8d121e060d6e9.svg",
     "index.html": "/PetsPaw/index.html",
-    "main.b5320759.css.map": "/PetsPaw/static/css/main.b5320759.css.map",
-    "main.858d3d6e.js.map": "/PetsPaw/static/js/main.858d3d6e.js.map"
+    "main.6a003d97.js.map": "/PetsPaw/static/js/main.6a003d97.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5320759.css",
-    "static/js/main.858d3d6e.js"
+    "static/js/main.6a003d97.js"
   ]
 }
