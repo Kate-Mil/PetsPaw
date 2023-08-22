@@ -1,13 +1,21 @@
 {
   "files": {
     "main.css": "/PetsPaw/static/css/main.b5320759.css",
-    "main.js": "/PetsPaw/static/js/main.07d3183d.js",
+    "main.js": "/PetsPaw/static/js/main.4a5dce96.js",
+    "static/media/girl-and-pet@2x.png": "/PetsPaw/static/media/girl-and-pet@2x.35defef5f0802c240a16.png",
+    "static/media/girl-and-pet@1x.png": "/PetsPaw/static/media/girl-and-pet@1x.cd95d53806bd37e1393b.png",
+    "static/media/images-search@2x.png": "/PetsPaw/static/media/images-search@2x.f0be45fd188d3d963670.png",
+    "static/media/pet-breeds@2x.png": "/PetsPaw/static/media/pet-breeds@2x.ec0ea2b7e028efac5f93.png",
+    "static/media/vote-table@2x.png": "/PetsPaw/static/media/vote-table@2x.1ac78301ff24a201abb1.png",
+    "static/media/images-search@1x.png": "/PetsPaw/static/media/images-search@1x.38502ff9b2129cb5170d.png",
+    "static/media/vote-table@1x.png": "/PetsPaw/static/media/vote-table@1x.181998f2b63b6c87ae3b.png",
+    "static/media/pet-breeds@1x.png": "/PetsPaw/static/media/pet-breeds@1x.3c453e9b5b2a96a32f0e.png",
     "index.html": "/PetsPaw/index.html",
     "main.b5320759.css.map": "/PetsPaw/static/css/main.b5320759.css.map",
-    "main.07d3183d.js.map": "/PetsPaw/static/js/main.07d3183d.js.map"
+    "main.4a5dce96.js.map": "/PetsPaw/static/js/main.4a5dce96.js.map"
   },
   "entrypoints": [
     "static/css/main.b5320759.css",
-    "static/js/main.07d3183d.js"
+    "static/js/main.4a5dce96.js"
   ]
 }
