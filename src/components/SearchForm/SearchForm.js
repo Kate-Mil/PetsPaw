@@ -13,7 +13,7 @@ const SearchForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const query = e.target.query.value.toLowerCase().trim();
+    const query = e.target.query.value.toLowerCase().trim().slice(0, 4);
 
     if (!query) {
       return;
