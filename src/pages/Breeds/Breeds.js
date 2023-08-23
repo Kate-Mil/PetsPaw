@@ -34,11 +34,16 @@ const Breeds = () => {
     if (!query) {
       return;
     }
+
     async function fetchData() {
       setIsloading(true);
       try {
         const data = await getCatsImagesByBreed(query);
-        setImages(data);
+        if (data.length === 0) {
+          window.alert('Oops, something went wrong. Please try again.');
+        } else {
+          setImages(data);
+        }
       } catch (error) {
         setError(error.message);
       } finally {
