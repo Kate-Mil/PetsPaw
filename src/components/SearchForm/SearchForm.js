@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import sprite from '../../pictures/sprite.svg';
 import {
   SearchFormButton,
@@ -6,18 +7,22 @@ import {
   SearchFormWrapper,
 } from './SearchForm.styled';
 
-const SearchForm = ({ onSubmit }) => {
+const SearchForm = () => {
+  const [, setSearchParams] = useSearchParams();
   const formRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
-    const query = e.target.query.value.toLowerCase().trim().slice(0, 4);
+    const query = e.target.query.value.toLowerCase().trim();
 
     if (!query) {
       return;
     }
-    onSubmit(query);
+
+    setSearchParams({ query });
     formRef.current.reset();
+    navigate(`/search?query=${encodeURIComponent(query)}`);
   };
 
   return (
@@ -29,6 +34,7 @@ const SearchForm = ({ onSubmit }) => {
         autoFocus
         placeholder="Search for breeds by name"
       />
+
       <SearchFormButton type="submit">
         <svg width="20" height="20">
           <use href={`${sprite}#search`}></use>

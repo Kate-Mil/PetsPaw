@@ -1,12 +1,20 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import AppBar from '../AppBar/AppBar';
-import { LayoutWrapper } from './Layout.styled';
+import { LayoutWrapper, SectionWrapper } from './Layout.styled';
+
+import SearchBar from 'components/SearchBar/SearchBar';
 
 const Layout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <LayoutWrapper>
       <AppBar />
-      <Outlet />
+      <SectionWrapper>
+        {!isHomePage && <SearchBar />}
+        <Outlet />
+      </SectionWrapper>
     </LayoutWrapper>
   );
 };
