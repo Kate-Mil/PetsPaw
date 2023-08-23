@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
 import Loader from 'components/Loader/Loader';
@@ -6,12 +5,14 @@ import ImagesList from 'components/ImagesList/ImagesList';
 import { getAllCats, getCatsImagesByBreed } from 'services/getCat-api';
 
 const Breeds = () => {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('query');
-  console.log(query);
+  const [query, setQuery] = useState('');
   const [images, setImages] = useState([]);
   const [isloading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
+
+  const formSubmitHandler = searchForm => {
+    setQuery(searchForm);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -51,7 +52,7 @@ const Breeds = () => {
   return (
     <div>
       <div>
-        <SearchForm />
+        <SearchForm onSubmit={formSubmitHandler} />
         <div>кнопки </div>
       </div>
       <div>

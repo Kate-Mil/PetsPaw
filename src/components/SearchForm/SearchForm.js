@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { useRef } from 'react';
 import sprite from '../../pictures/sprite.svg';
 import {
@@ -7,8 +6,7 @@ import {
   SearchFormWrapper,
 } from './SearchForm.styled';
 
-const SearchForm = () => {
-  const [, setSearchParams] = useSearchParams();
+const SearchForm = ({ onSubmit }) => {
   const formRef = useRef(null);
 
   const handleSubmit = e => {
@@ -18,7 +16,7 @@ const SearchForm = () => {
     if (!query) {
       return;
     }
-    setSearchParams({ query });
+    onSubmit(query);
     formRef.current.reset();
   };
 

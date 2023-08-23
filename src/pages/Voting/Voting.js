@@ -1,16 +1,18 @@
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
 
 const Voting = () => {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('query');
-  console.log(query);
+  const [query, setQuery] = useState('');
 
+  const formSubmitHandler = searchForm => {
+    setQuery(searchForm);
+  };
+  console.log(query);
   return (
     <div>
       Voting page
       <div>
-        <SearchForm />
+        <SearchForm onSubmit={formSubmitHandler} />
         <div>кнопки </div>
       </div>
     </div>
