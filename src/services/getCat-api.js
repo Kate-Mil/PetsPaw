@@ -12,12 +12,23 @@ export const getAllCats = async () => {
 
 export const getAllBreeds = async () => {
   const { data } = await axios.get(`/breeds`);
-  return data;
+  const result = data.map(el => el.image).filter(el => el !== undefined);
+  return result;
 };
 
 export const getCatsImagesByBreed = async breed_id => {
   const { data } = await axios(`/images/search?breed_ids=${breed_id}&limit=10`);
   return data;
+};
+
+export const getCatsForVouting = async () => {
+  const { data } = await axios(`votes?limit=10&order=DESC`);
+  return data;
+};
+
+export const postVoutes = async ({ image_id, value }) => {
+  const response = await axios.post(`/voutes`, { image_id, value });
+  return response.data;
 };
 
 // export const getCatsImagesByBreed = async (breed_id, amount, order) => {

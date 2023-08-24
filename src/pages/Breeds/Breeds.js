@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Loader from 'components/Loader/Loader';
 import ImagesList from 'components/ImagesList/ImagesList';
-import { getAllCats } from 'services/getCat-api';
+import { getAllBreeds } from 'services/getCat-api';
 
 const Breeds = () => {
   const [images, setImages] = useState([]);
@@ -12,7 +12,7 @@ const Breeds = () => {
     async function fetchData() {
       setIsloading(true);
       try {
-        const data = await getAllCats();
+        const data = await getAllBreeds();
         setImages(data);
       } catch (error) {
         setError(error.message);
