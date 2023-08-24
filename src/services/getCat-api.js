@@ -12,12 +12,15 @@ export const getAllCats = async () => {
 
 export const getAllBreeds = async () => {
   const { data } = await axios.get(`/breeds`);
-  const result = data.map(el => el.image).filter(el => el !== undefined);
-  return result;
+
+  return data;
 };
 
-export const getCatsImagesByBreed = async breed_id => {
-  const { data } = await axios(`/images/search?breed_ids=${breed_id}&limit=10`);
+export const getCatsImagesByBreed = async (breed_id, limit, order) => {
+  const { data } = await axios(
+    `/images/search?breed_ids=${breed_id}&limit=${limit}&order=${order}`
+  );
+  console.log(data);
   return data;
 };
 
