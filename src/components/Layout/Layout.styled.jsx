@@ -11,3 +11,8 @@ export const SectionWrapper = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
+
+export const OutletWrapper = styled.div`
+  border-radius: 20px;
+  background: #fff;
+`;

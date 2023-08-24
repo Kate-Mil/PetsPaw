@@ -22,7 +22,7 @@ export const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 20px;
 `;
 
 export const StyledImg = styled.img`

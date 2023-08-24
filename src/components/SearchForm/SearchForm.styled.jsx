@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const SearchFormWrapper = styled.form`
   max-width: 470px;
-  margin-bottom: 30px;
   display: flex;
   align-items: center;
   background-color: #fff;

@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import AppBar from '../AppBar/AppBar';
-import { LayoutWrapper, SectionWrapper } from './Layout.styled';
+import { LayoutWrapper, SectionWrapper, OutletWrapper } from './Layout.styled';
 
 import SearchBar from 'components/SearchBar/SearchBar';
 
@@ -13,7 +13,9 @@ const Layout = () => {
       <AppBar />
       <SectionWrapper>
         {!isHomePage && <SearchBar />}
-        <Outlet />
+        <OutletWrapper>
+          <Outlet />
+        </OutletWrapper>
       </SectionWrapper>
     </LayoutWrapper>
   );
