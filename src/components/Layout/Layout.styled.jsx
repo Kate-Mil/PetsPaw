@@ -15,4 +15,5 @@ export const SectionWrapper = styled.div`
 export const OutletWrapper = styled.div`
   border-radius: 20px;
   background: #fff;
+  height: 100%;
 `;

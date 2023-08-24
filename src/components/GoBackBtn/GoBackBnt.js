@@ -1,10 +1,14 @@
 import { StyledLink } from './GoBackBtn.styled';
 import sprite from '../../pictures/sprite.svg';
 
-export const GoBackBtn = ({ path }) => {
+export const GoBackBtn = () => {
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
   return (
-    <StyledLink to={path}>
-      <svg width="30" height="30">
+    <StyledLink onClick={handleGoBack}>
+      <svg width="20" height="20">
         <use href={`${sprite}#back`}></use>
       </svg>
     </StyledLink>

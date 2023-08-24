@@ -1,4 +1,10 @@
+import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
+
 const Favourites = () => {
-  return <>Favourites</>;
+  return (
+    <>
+      <PageNavMarkers />
+    </>
+  );
 };
 export default Favourites;

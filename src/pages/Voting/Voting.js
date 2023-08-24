@@ -3,6 +3,8 @@
 // import ImagesList from 'components/ImagesList/ImagesList';
 // import { getCatsForVouting } from 'services/getCat-api';
 
+import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
+
 const Voting = () => {
   // const [images, setImages] = useState([]);
   // const [isloading, setIsloading] = useState(false);
@@ -26,15 +28,9 @@ const Voting = () => {
   // }, []);
 
   return (
-    <div>
-      Voting page
-      <div>
-        <div>
-          <button>GoBackBtn</button>
-          <p>Cuttent page</p>
-        </div>
-      </div>
-    </div>
+    <>
+      <PageNavMarkers />
+    </>
   );
 };
 

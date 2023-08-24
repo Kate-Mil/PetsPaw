@@ -1,4 +1,10 @@
+import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
+
 const Dislikes = () => {
-  return <>Dislikes</>;
+  return (
+    <>
+      <PageNavMarkers />
+    </>
+  );
 };
 export default Dislikes;
