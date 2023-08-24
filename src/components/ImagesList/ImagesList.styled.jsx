@@ -7,7 +7,7 @@ export const StyledList = styled.div`
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   max-width: 680px;
-  padding: 104px 20px;
+  padding: 20px;
 `;
 
 export const StyledItem = styled.div`
