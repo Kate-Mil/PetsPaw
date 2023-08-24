@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  position: relative;
+`;
+
 export const PictureWrapper = styled.picture`
   width: 775px;
   height: 900px;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -30px;
+  right: -30px;
 `;
 
 export const Img = styled.img`

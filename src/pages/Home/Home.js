@@ -1,10 +1,10 @@
 import image1 from '../../pictures/girl-and-pet@1x.png';
 import image2 from '../../pictures/girl-and-pet@2x.png';
-import { Background, Img, PictureWrapper } from './Home.styled';
+import { Background, Container, Img, PictureWrapper } from './Home.styled';
 
 const Home = () => {
   return (
-    <div>
+    <Container>
       <PictureWrapper>
         <source srcSet={`${image1} 1x, ${image2} 2x`} type="image/png" />
 
@@ -17,7 +17,7 @@ const Home = () => {
         />
       </PictureWrapper>
       <Background />
-    </div>
+    </Container>
   );
 };
 
