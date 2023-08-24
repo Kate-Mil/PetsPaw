@@ -1,12 +1,14 @@
 import SearchForm from 'components/SearchForm/SearchForm';
+import FeatbackBtns from 'components/FeadbackBtns/FeadbackBtns';
+import { Wrapper } from './SearchBar.styled';
 
 const SearchBar = () => {
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      <Wrapper>
         <SearchForm />
-        <div>кнопки </div>
-      </div>
+        <FeatbackBtns />
+      </Wrapper>
     </>
   );
 };
