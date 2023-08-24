@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Logo = styled.div`
@@ -74,7 +75,9 @@ export const StyledDesc = styled.p`
   padding-bottom: 10px;
 `;
 
-export const StyledButton = styled.button`
+export const Styledlink = styled(NavLink)`
+  display: block;
+
   &:hover ${PictureWrapper} {
     border: 4px solid #fff;
   }
@@ -87,7 +90,7 @@ export const StyledButton = styled.button`
     border: 4px solid #fbe0dc;
   }
 
-  &:active ${StyledDesc} {
+  &.active ${StyledDesc} {
     background: #ff868e;
     color: #fff;
   }

@@ -12,8 +12,8 @@ import {
   GalleryPicture,
   List,
   Logo,
-  StyledButton,
   StyledDesc,
+  Styledlink,
   SubTitle,
   Text,
   Title,
@@ -36,49 +36,42 @@ const AppBar = () => {
         <SubTitle>Lets start using The Cat API</SubTitle>
         <List>
           <li>
-            <NavLink to="/voting">
-              <StyledButton>
-                <VotingPicture>
-                  <source
-                    srcSet={`${image1} 1x, ${image2} 2x`}
-                    type="image/png"
-                  />
-
-                  <img src="{image1}" alt="note" loading="lazy" />
-                </VotingPicture>
-                <StyledDesc>voting</StyledDesc>
-              </StyledButton>
-            </NavLink>
+            <Styledlink to="/voting">
+              <VotingPicture>
+                <source
+                  srcSet={`${image1} 1x, ${image2} 2x`}
+                  type="image/png"
+                />
+                <img src="{image1}" alt="note" loading="lazy" />
+              </VotingPicture>
+              <StyledDesc>voting</StyledDesc>
+            </Styledlink>
           </li>
           <li>
-            <NavLink to="/breeds">
-              <StyledButton>
-                <BreedsPicture>
-                  <source
-                    srcSet={`${image3} 1x, ${image4} 2x`}
-                    type="image/png"
-                  />
+            <Styledlink to="/breeds">
+              <BreedsPicture>
+                <source
+                  srcSet={`${image3} 1x, ${image4} 2x`}
+                  type="image/png"
+                />
 
-                  <img src="{image3}" alt="cat" loading="lazy" />
-                </BreedsPicture>
-                <StyledDesc>breeds</StyledDesc>
-              </StyledButton>
-            </NavLink>
+                <img src="{image3}" alt="cat" loading="lazy" />
+              </BreedsPicture>
+              <StyledDesc>breeds</StyledDesc>
+            </Styledlink>
           </li>
           <li>
-            <NavLink to="/gallery">
-              <StyledButton>
-                <GalleryPicture>
-                  <source
-                    srcSet={`${image5} 1x, ${image6} 2x`}
-                    type="image/png"
-                  />
+            <Styledlink to="/gallery">
+              <GalleryPicture>
+                <source
+                  srcSet={`${image5} 1x, ${image6} 2x`}
+                  type="image/png"
+                />
 
-                  <img src="{image5}" alt="hand with device" loading="lazy" />
-                </GalleryPicture>
-                <StyledDesc>gallery</StyledDesc>
-              </StyledButton>
-            </NavLink>
+                <img src="{image5}" alt="hand with device" loading="lazy" />
+              </GalleryPicture>
+              <StyledDesc>gallery</StyledDesc>
+            </Styledlink>
           </li>
         </List>
       </AppBarWrapper>
