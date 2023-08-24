@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Loader from 'components/Loader/Loader';
 import ImagesList from 'components/ImagesList/ImagesList';
 import { getAllBreeds } from 'services/getCat-api';
+import { GoBackBtn } from 'components/GoBackBtn/GoBackBnt';
 
 const Breeds = () => {
   const [images, setImages] = useState([]);
@@ -27,7 +28,7 @@ const Breeds = () => {
   return (
     <div>
       <div>
-        <button>GoBackBtn</button>
+        <GoBackBtn />
         <p>Cuttent page</p>
         {images.length > 0 && <ImagesList images={images} />}
         {error && <p>{error.message}</p>}
