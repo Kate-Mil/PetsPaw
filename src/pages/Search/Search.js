@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCatsImagesByBreed } from 'services/getCat-api';
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
+import { SearchBreed, SearchString } from './Search.styled';
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -41,6 +42,9 @@ const Search = () => {
   return (
     <>
       <PageNavMarkers />
+      <SearchString>
+        Search results for: <SearchBreed>{query}</SearchBreed>
+      </SearchString>
       {images.length > 0 && <ImagesList images={images} />}
       {error && <p>{error.message}</p>}
       {isloading && <Loader />}

@@ -29,6 +29,10 @@ const Breeds = () => {
     <div>
       <div>
         <PageNavMarkers />
+        <>BreedsList</>
+        <>LoadingLimitsList</>
+        <button type="button">A-Z Order</button>
+        <button type="button">Z-A Order</button>
         {images.length > 0 && <ImagesList images={images} />}
         {error && <p>{error.message}</p>}
         {isloading && <Loader />}
