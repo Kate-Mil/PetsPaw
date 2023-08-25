@@ -5,6 +5,7 @@ import {
   SearchFormButton,
   SearchFormInput,
   SearchFormWrapper,
+  Img,
 } from './SearchForm.styled';
 
 const SearchForm = () => {
@@ -36,9 +37,9 @@ const SearchForm = () => {
       />
 
       <SearchFormButton type="submit">
-        <svg width="20" height="20">
+        <Img width="20" height="20">
           <use href={`${sprite}#search`}></use>
-        </svg>
+        </Img>
       </SearchFormButton>
     </SearchFormWrapper>
   );

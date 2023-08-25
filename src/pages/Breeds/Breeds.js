@@ -6,6 +6,7 @@ import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 import { getAllBreeds, getCatsImagesByBreed } from 'services/getCat-api';
 import { LoadingLimitsList } from 'components/LoadingLimitsList/LoadingLimitsList';
 import { OrderBtns } from 'components/OrderBtns/OrderBtns';
+import { SortItemsWrapper, Wrapper } from './Breeds.styled';
 
 const Breeds = () => {
   const [breeds, setBreeds] = useState([]);
@@ -77,19 +78,19 @@ const Breeds = () => {
 
   return (
     <div>
-      <div>
+      <Wrapper>
         <PageNavMarkers />
-        <div style={{ display: 'flex' }}>
+        <SortItemsWrapper>
           <BreedsList onClick={handleBreedIdClick} sortOrder={order} />
           <LoadingLimitsList onClick={handleLimitClick} />
           <OrderBtns onClick={handleOrderClick} />
-        </div>
-        {isBreedsData
-          ? breeds.length > 0 && <ImagesList images={result} />
-          : breeds.length > 0 && <ImagesList images={breeds} />}
-        {error && <p>{error.message}</p>}
-        {isloading && <Loader />}
-      </div>
+        </SortItemsWrapper>
+      </Wrapper>
+      {isBreedsData
+        ? breeds.length > 0 && <ImagesList images={result} />
+        : breeds.length > 0 && <ImagesList images={breeds} />}
+      {error && <p>{error.message}</p>}
+      {isloading && <Loader />}
     </div>
   );
 };

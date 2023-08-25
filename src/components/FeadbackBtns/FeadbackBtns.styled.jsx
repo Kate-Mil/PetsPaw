@@ -6,12 +6,17 @@ export const Wrapper = styled.ul`
   gap: 10px;
 `;
 
-export const Item = styled.li`
+export const StyledLink = styled(NavLink)`
+  display: block;
   width: 60px;
   height: 60px;
   border-radius: 20px;
   padding: 15px;
   background-color: #fff;
+  color: #ff868e;
+
+  transition: background-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   &:hover {
     background: #fbe0dc;
@@ -19,15 +24,10 @@ export const Item = styled.li`
 
   &:active {
     background: #ff868e;
+    color: #fff;
   }
 `;
 
 export const Img = styled.svg`
-  &:active ${Item} {
-    fill: #fff;
-  }
-`;
-
-export const StyledLink = styled(NavLink)`
-  display: block;
+  fill: currentColor;
 `;

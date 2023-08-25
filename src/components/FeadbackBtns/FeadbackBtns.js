@@ -1,5 +1,4 @@
-import { NavLink } from 'react-router-dom';
-import { Img, Item, StyledLink, Wrapper } from './FeadbackBtns.styled';
+import { Img, StyledLink, Wrapper } from './FeadbackBtns.styled';
 import sprite from '../../pictures/sprite.svg';
 
 const FeatbackBtns = () => {
@@ -7,27 +6,27 @@ const FeatbackBtns = () => {
     <>
       <div>
         <Wrapper>
-          <Item>
+          <li>
             <StyledLink to="/likes">
               <Img width="30" height="30">
                 <use href={`${sprite}#like`}></use>
               </Img>
             </StyledLink>
-          </Item>
-          <Item>
-            <NavLink to="/favourites">
-              <svg width="30" height="30">
+          </li>
+          <li>
+            <StyledLink to="/favourites">
+              <Img width="30" height="30">
                 <use href={`${sprite}#fav`}></use>
-              </svg>
-            </NavLink>
-          </Item>
-          <Item>
-            <NavLink to="/dislike">
-              <svg width="30" height="30">
+              </Img>
+            </StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/dislike">
+              <Img width="30" height="30">
                 <use href={`${sprite}#dislike`}></use>
-              </svg>
-            </NavLink>
-          </Item>
+              </Img>
+            </StyledLink>
+          </li>
         </Wrapper>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { StyledLink } from './GoBackBtn.styled';
+import { StyledLink, Img } from './GoBackBtn.styled';
 import sprite from '../../pictures/sprite.svg';
 
 export const GoBackBtn = () => {
@@ -8,9 +8,9 @@ export const GoBackBtn = () => {
 
   return (
     <StyledLink onClick={handleGoBack}>
-      <svg width="20" height="20">
+      <Img width="20" height="20">
         <use href={`${sprite}#back`}></use>
-      </svg>
+      </Img>
     </StyledLink>
   );
 };

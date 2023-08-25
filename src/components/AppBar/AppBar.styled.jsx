@@ -78,6 +78,9 @@ export const StyledDesc = styled.p`
 export const Styledlink = styled(NavLink)`
   display: block;
 
+  transition: background-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    border 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
   &:hover ${PictureWrapper} {
     border: 4px solid #fff;
   }
