@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Wrapper = styled.div`
@@ -11,7 +12,7 @@ export const Wrapper = styled.div`
   height: 40px;
   border-radius: 10px;
   background: #f8f8f7;
-  position: relative;
+
   cursor: pointer;
 `;
 
@@ -24,6 +25,7 @@ export const Title = styled.h1`
   padding-left: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
+  margin: 0;
 `;
 
 export const CloseBtn = styled.button`
@@ -40,8 +42,8 @@ export const Img = styled.svg`
 
 export const List = styled.ul`
   position: absolute;
-  top: 27%;
-  left: auto;
+  top: 30px;
+  left: 0;
   padding-left: 10px;
   background: #f8f8f7;
   width: 226px;

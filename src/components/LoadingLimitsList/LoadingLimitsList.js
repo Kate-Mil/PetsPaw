@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import sprite from '../../pictures/sprite.svg';
 import {
   Title,
@@ -12,9 +12,12 @@ import {
 
 export const LoadingLimitsList = ({ onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+  const listRef = useRef(null);
 
   const handleButtonClicked = limit => {
     onClick(limit);
+    setIsOpen(false);
   };
 
   const limits = [5, 10, 15, 20];
@@ -23,9 +26,28 @@ export const LoadingLimitsList = ({ onClick }) => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleOutsideClick = event => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target) &&
+        listRef.current &&
+        !listRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <Container>
-      <Wrapper onClick={toggleDropdown}>
+      <Wrapper ref={containerRef} onClick={toggleDropdown}>
         <Title>Limit</Title>
         <CloseBtn type="button" isOpen={isOpen} onClick={toggleDropdown}>
           <Img width="12" height="12">
@@ -33,7 +55,7 @@ export const LoadingLimitsList = ({ onClick }) => {
           </Img>
         </CloseBtn>
       </Wrapper>
-      <List isOpen={isOpen}>
+      <List ref={listRef} isOpen={isOpen}>
         {limits.map(limit => (
           <li key={limit}>
             <Item onClick={() => handleButtonClicked(limit)}>

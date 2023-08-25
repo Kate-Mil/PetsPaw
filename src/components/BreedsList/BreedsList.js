@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getAllBreeds } from 'services/getCat-api';
 import {
   Title,
@@ -16,6 +16,8 @@ export const BreedsList = ({ onClick }) => {
   const [isloading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+  const listRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,6 +35,25 @@ export const BreedsList = ({ onClick }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handleOutsideClick = event => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target) &&
+        listRef.current &&
+        !listRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   const allBreeds = breeds.map(el => ({ name: el.name, id: el.id }));
 
   const toggleDropdown = () => {
@@ -41,7 +62,7 @@ export const BreedsList = ({ onClick }) => {
 
   return (
     <Container>
-      <Wrapper onClick={toggleDropdown}>
+      <Wrapper ref={containerRef} onClick={toggleDropdown}>
         <Title>All breeds</Title>
         <CloseBtn type="button" isOpen={isOpen} onClick={toggleDropdown}>
           <Img width="12" height="12">
@@ -49,10 +70,17 @@ export const BreedsList = ({ onClick }) => {
           </Img>
         </CloseBtn>
       </Wrapper>
-      <List isOpen={isOpen}>
+      <List ref={listRef} isOpen={isOpen}>
         {allBreeds.map(({ id, name }) => (
           <li key={id}>
-            <Item onClick={() => onClick(id)}>{name}</Item>
+            <Item
+              onClick={() => {
+                onClick(id);
+                setIsOpen(false);
+              }}
+            >
+              {name}
+            </Item>
           </li>
         ))}
         {error && <p>{error.message}</p>}
