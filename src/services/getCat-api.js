@@ -16,9 +16,9 @@ export const getAllBreeds = async () => {
   return data;
 };
 
-export const getCatsImagesByBreed = async (breed_id, limit, order) => {
+export const getCatsImagesByBreed = async (breed_id, limit) => {
   const { data } = await axios(
-    `/images/search?breed_ids=${breed_id}&limit=${limit}&order=${order}`
+    `/images/search?breed_ids=${breed_id}&limit=${limit}`
   );
   console.log(data);
   return data;
