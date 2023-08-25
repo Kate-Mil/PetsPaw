@@ -3,7 +3,11 @@ import Loader from 'components/Loader/Loader';
 import ImagesList from 'components/ImagesList/ImagesList';
 import { BreedsList } from 'components/BreedsList/BreedsList';
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
-import { getAllBreeds, getCatsImagesByBreed } from 'services/getCat-api';
+import {
+  getAllBreeds,
+  getCatsById,
+  getCatsImagesByBreed,
+} from 'services/getCat-api';
 import { LoadingLimitsList } from 'components/LoadingLimitsList/LoadingLimitsList';
 import { OrderBtns } from 'components/OrderBtns/OrderBtns';
 import { SortItemsWrapper, Wrapper } from './Breeds.styled';
@@ -16,6 +20,7 @@ const Breeds = () => {
   const [breedId, setBreedId] = useState('');
   const [order, setOrder] = useState('ASC');
   const [isBreedsData, setIsBreedsData] = useState(true);
+  const [breedInfo, setBreedInfo] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -64,7 +69,17 @@ const Breeds = () => {
   const handleOrderClick = order => {
     setOrder(order);
   };
-  // console.log(order);
+
+  const handleImageClick = async id => {
+    try {
+      const data = await getCatsById(id);
+
+      setBreedInfo(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  console.log(breedInfo);
 
   // const sortedBreeds = [...breeds].sort((a, b) => {
   //   if (order === 'ASC') {
@@ -87,8 +102,12 @@ const Breeds = () => {
         </SortItemsWrapper>
       </Wrapper>
       {isBreedsData
-        ? breeds.length > 0 && <ImagesList images={result} />
-        : breeds.length > 0 && <ImagesList images={breeds} />}
+        ? breeds.length > 0 && (
+            <ImagesList images={result} onImageClick={handleImageClick} />
+          )
+        : breeds.length > 0 && (
+            <ImagesList images={breeds} onImageClick={handleImageClick} />
+          )}
       {error && <p>{error.message}</p>}
       {isloading && <Loader />}
     </div>

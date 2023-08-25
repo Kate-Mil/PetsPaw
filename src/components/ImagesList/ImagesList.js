@@ -5,7 +5,7 @@ import {
   StyledImg,
 } from './ImagesList.styled';
 
-export default function ImagesList({ images }) {
+export default function ImagesList({ images, onImageClick }) {
   console.log(images);
 
   const gridAreas = [
@@ -51,7 +51,7 @@ export default function ImagesList({ images }) {
         images.map(({ id, url }, index) => {
           return (
             <StyledItem key={id} gridArea={gridAreas[index]}>
-              <ImageWrapper>
+              <ImageWrapper onClick={() => onImageClick(id)}>
                 <StyledImg src={url} alt="cat" loading="lazy" />
               </ImageWrapper>
             </StyledItem>

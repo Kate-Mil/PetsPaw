@@ -18,7 +18,7 @@ export const StyledItem = styled.div`
   ${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled.button`
   width: 100%;
   height: 100%;
   overflow: hidden;

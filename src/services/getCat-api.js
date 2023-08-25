@@ -24,6 +24,12 @@ export const getCatsImagesByBreed = async (breed_id, limit) => {
   return data;
 };
 
+export const getCatsById = async id => {
+  const { data } = await axios(`/images/${id}`);
+  const [result] = data.breeds.map(el => el.id);
+  return result;
+};
+
 export const getCatsForVouting = async () => {
   const { data } = await axios(`votes?limit=10&order=DESC`);
   return data;
