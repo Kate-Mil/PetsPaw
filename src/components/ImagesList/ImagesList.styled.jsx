@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(1fr, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   max-width: 680px;

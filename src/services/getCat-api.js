@@ -5,8 +5,17 @@ axios.defaults.headers.common[
   'x-api-key'
 ] = `live_R8g8WvxoJw5GPT3tbmLTVc6OlyxWuO6jTJ6RODP62xwHTOiCeESN3NAx8eTrXZWl`;
 
-export const getAllCats = async () => {
-  const { data } = await axios.get(`/images/search?limit=10`);
+export const getAllCats = async (
+  limit,
+  order,
+  has_breeds,
+  type,
+  page,
+  breed_id
+) => {
+  const { data } = await axios.get(
+    `images/search?breed_ids=${breed_id}&limit=${limit}&order=${order}&has_breeds=${has_breeds}&type=${type}&page=${page}`
+  );
   return data;
 };
 

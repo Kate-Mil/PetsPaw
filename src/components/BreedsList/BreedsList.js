@@ -16,6 +16,7 @@ export const BreedsList = ({ onClick }) => {
   const [isloading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [categoryName, setCategoryName] = useState('');
   const containerRef = useRef(null);
   const listRef = useRef(null);
 
@@ -55,6 +56,13 @@ export const BreedsList = ({ onClick }) => {
   }, []);
 
   const allBreeds = breeds.map(el => ({ name: el.name, id: el.id }));
+  console.log({ allBreeds });
+  let selectBreeds;
+  if (categoryName === 'All breeds' || categoryName === '') {
+    selectBreeds = allBreeds;
+  } else {
+    selectBreeds = [{ name: 'All breeds', id: 'all' }, ...allBreeds];
+  }
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -63,7 +71,7 @@ export const BreedsList = ({ onClick }) => {
   return (
     <Container>
       <Wrapper ref={containerRef} onClick={toggleDropdown}>
-        <Title>All breeds</Title>
+        <Title>{categoryName ? categoryName : 'All breeds'}</Title>
         <CloseBtn type="button" isOpen={isOpen} onClick={toggleDropdown}>
           <Img width="12" height="12">
             <use href={`${sprite}#dropdown`}></use>
@@ -71,11 +79,12 @@ export const BreedsList = ({ onClick }) => {
         </CloseBtn>
       </Wrapper>
       <List ref={listRef} isOpen={isOpen}>
-        {allBreeds.map(({ id, name }) => (
+        {selectBreeds.map(({ id, name }) => (
           <li key={id}>
             <Item
               onClick={() => {
                 onClick(id);
+                setCategoryName(name);
                 setIsOpen(false);
               }}
             >

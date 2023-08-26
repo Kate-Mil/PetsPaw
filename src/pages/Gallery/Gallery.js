@@ -8,12 +8,26 @@ const Gallery = () => {
   const [breeds, setBreeds] = useState([]);
   const [isloading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
+  const [limit, setLimit] = useState('10');
+  const [breedId, setBreedId] = useState('abys'); //??? не срабатывает запрос
+  const [order, setOrder] = useState('RAND');
+  const [type, setType] = useState('Animated'); //????
+  const [page, setPage] = useState(0);
+  const [has_breeds, setHas_breeds] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
       setIsloading(true);
+      console.log(breedId);
       try {
-        const data = await getAllCats(); // Изменили на getAllCats
+        const data = await getAllCats(
+          limit,
+          order,
+          has_breeds,
+          type,
+          page,
+          breedId
+        ); // Изменили на getAllCats
         console.log('Fetch AllCats', data); // Изменили на Fetch AllCats
         setBreeds(data);
       } catch (error) {
@@ -24,17 +38,14 @@ const Gallery = () => {
     }
 
     fetchData();
-  }, []);
+  }, [order, type, breedId, limit, page, has_breeds]);
 
   return (
     <div>
       <PageNavMarkers />
-      {isloading ? (
-        <Loader />
-      ) : (
-        breeds.length > 0 && <ImagesList images={breeds} />
-      )}
+      {breeds.length > 0 && <ImagesList images={breeds} />}
       {error && <p>{error.message}</p>}
+      {isloading && <Loader />}
     </div>
   );
 };

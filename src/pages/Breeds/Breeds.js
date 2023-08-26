@@ -19,7 +19,7 @@ const Breeds = () => {
   const [error, setError] = useState(null);
   const [limit, setLimit] = useState('100');
   const [breedId, setBreedId] = useState('');
-  const [order, setOrder] = useState('ASC');
+  const [order, setOrder] = useState('ASC'); //изменить на sort
   const [isBreedsData, setIsBreedsData] = useState(true);
   const [searchId, setSearchId] = useState('');
   const [breedInfo, setBreedInfo] = useState(null);
@@ -52,7 +52,7 @@ const Breeds = () => {
       setIsloading(true);
       try {
         const data = await getCatsImagesByBreed(breedId, limit);
-        // console.log('FetchBYID&LIMIT', data);
+        console.log('FetchBYID&LIMIT', data);
         setIsBreedsData(false);
         setBreeds(data);
       } catch (error) {
