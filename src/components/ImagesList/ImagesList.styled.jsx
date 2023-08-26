@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const StyledList = styled.div`
   display: grid;
@@ -18,7 +19,7 @@ export const StyledItem = styled.div`
   ${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 
-export const ImageWrapper = styled.button`
+export const ImageWrapper = styled(NavLink)`
   width: 100%;
   height: 100%;
   overflow: hidden;

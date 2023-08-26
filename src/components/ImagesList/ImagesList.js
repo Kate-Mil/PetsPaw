@@ -4,8 +4,11 @@ import {
   StyledList,
   StyledImg,
 } from './ImagesList.styled';
+import { useNavigate } from 'react-router-dom';
 
-export default function ImagesList({ images, onImageClick }) {
+export default function ImagesList({ images }) {
+  const navigate = useNavigate();
+
   const getGridArea = index => {
     const patterns = [
       [1, 1, 3, 2],
@@ -30,6 +33,9 @@ export default function ImagesList({ images, onImageClick }) {
 
     return `${generatedPattern[0]} / ${generatedPattern[1]} / ${generatedPattern[2]} / ${generatedPattern[3]}`;
   };
+  const handleImageClick = id => {
+    navigate(`/breeds/${id}`);
+  };
 
   return (
     <StyledList>
@@ -37,7 +43,10 @@ export default function ImagesList({ images, onImageClick }) {
         images.map(({ id, url }, index) => {
           return (
             <StyledItem key={id} gridArea={getGridArea(index)}>
-              <ImageWrapper onClick={() => onImageClick(id)}>
+              <ImageWrapper
+                to={`/breeds/${id}`}
+                onClick={() => handleImageClick(id)}
+              >
                 <StyledImg src={url} alt="cat" loading="lazy" />
               </ImageWrapper>
             </StyledItem>

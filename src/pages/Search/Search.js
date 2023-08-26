@@ -23,7 +23,8 @@ const Search = () => {
     async function fetchData() {
       setIsloading(true);
       try {
-        const data = await getCatsImagesByBreed(searchQuery);
+        const limit = '100';
+        const data = await getCatsImagesByBreed(searchQuery, limit);
         if (data.length === 0) {
           window.alert('Oops, something went wrong. Please try again.');
         } else {
