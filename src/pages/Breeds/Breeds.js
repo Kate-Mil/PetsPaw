@@ -5,12 +5,13 @@ import { BreedsList } from 'components/BreedsList/BreedsList';
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 import {
   getAllBreeds,
-  getCatsById,
   getCatsImagesByBreed,
+  getCatsInfoById,
 } from 'services/getCat-api';
 import { LoadingLimitsList } from 'components/LoadingLimitsList/LoadingLimitsList';
 import { OrderBtns } from 'components/OrderBtns/OrderBtns';
 import { SortItemsWrapper, Wrapper } from './Breeds.styled';
+import { BreedInfo } from 'components/BreedInfo/BreedInfo';
 
 const Breeds = () => {
   const [breeds, setBreeds] = useState([]);
@@ -20,13 +21,16 @@ const Breeds = () => {
   const [breedId, setBreedId] = useState('');
   const [order, setOrder] = useState('ASC');
   const [isBreedsData, setIsBreedsData] = useState(true);
-  const [breedInfo, setBreedInfo] = useState('');
+  const [searchId, setSearchId] = useState('');
+  const [breedInfo, setBreedInfo] = useState(null);
 
+  //render images of all breeds from the first loading of the page
   useEffect(() => {
     async function fetchData() {
       setIsloading(true);
       try {
         const data = await getAllBreeds();
+        console.log('Fetch AllBreeds', data);
         setIsBreedsData(true);
         setBreeds(data);
       } catch (error) {
@@ -39,6 +43,7 @@ const Breeds = () => {
     fetchData();
   }, []);
 
+  //render images by condition (all pictures of particular breed and limit of the pictures per page)
   useEffect(() => {
     if (breedId === '' && limit === '100') {
       return;
@@ -58,6 +63,25 @@ const Breeds = () => {
     fetchData();
   }, [breedId, limit]);
 
+  useEffect(() => {
+    if (searchId === '') {
+      return;
+    }
+    async function fetchData() {
+      setIsloading(true);
+      try {
+        const data = await getCatsInfoById(searchId);
+        console.log('FetchInfo', data);
+        setBreedInfo(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsloading(false);
+      }
+    }
+    fetchData();
+  }, [searchId]);
+
   const handleBreedIdClick = breedId => {
     setBreedId(breedId);
   };
@@ -70,16 +94,10 @@ const Breeds = () => {
     setOrder(order);
   };
 
-  const handleImageClick = async id => {
-    try {
-      const data = await getCatsById(id);
-
-      setBreedInfo(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+  const handleImageClick = id => {
+    setSearchId(id);
   };
-  console.log(breedInfo);
+  console.log(searchId);
 
   // const sortedBreeds = [...breeds].sort((a, b) => {
   //   if (order === 'ASC') {
@@ -91,25 +109,54 @@ const Breeds = () => {
 
   const result = breeds.map(el => el.image).filter(el => el !== undefined);
 
+  // return (
+  //   <div>
+  //     <Wrapper>
+  //       <PageNavMarkers />
+  //       <SortItemsWrapper>
+  //         <BreedsList onClick={handleBreedIdClick} sortOrder={order} />
+  //         <LoadingLimitsList onClick={handleLimitClick} />
+  //         <OrderBtns onClick={handleOrderClick} />
+  //       </SortItemsWrapper>
+  //     </Wrapper>
+  //     {isBreedsData
+  //       ? breeds.length > 0 && (
+  //           <ImagesList images={result} onImageClick={handleImageClick} />
+  //         )
+  //       : breeds.length > 0 && (
+  //           <ImagesList images={breeds} onImageClick={handleImageClick} />
+  //         )}
+  //     {error && <p>{error.message}</p>}
+  //     {isloading && <Loader />}
+  //   </div>
+  // );
   return (
     <div>
       <Wrapper>
         <PageNavMarkers />
-        <SortItemsWrapper>
-          <BreedsList onClick={handleBreedIdClick} sortOrder={order} />
-          <LoadingLimitsList onClick={handleLimitClick} />
-          <OrderBtns onClick={handleOrderClick} />
-        </SortItemsWrapper>
+        {breedInfo === null && (
+          <SortItemsWrapper>
+            <BreedsList onClick={handleBreedIdClick} sortOrder={order} />
+            <LoadingLimitsList onClick={handleLimitClick} />
+            <OrderBtns onClick={handleOrderClick} />
+          </SortItemsWrapper>
+        )}
       </Wrapper>
-      {isBreedsData
-        ? breeds.length > 0 && (
-            <ImagesList images={result} onImageClick={handleImageClick} />
-          )
-        : breeds.length > 0 && (
-            <ImagesList images={breeds} onImageClick={handleImageClick} />
-          )}
-      {error && <p>{error.message}</p>}
-      {isloading && <Loader />}
+      {breedInfo !== null ? (
+        <BreedInfo breedInfo={breedInfo} />
+      ) : (
+        <>
+          {isBreedsData
+            ? breeds.length > 0 && (
+                <ImagesList images={result} onImageClick={handleImageClick} />
+              )
+            : breeds.length > 0 && (
+                <ImagesList images={breeds} onImageClick={handleImageClick} />
+              )}
+          {error && <p>{error.message}</p>}
+          {isloading && <Loader />}
+        </>
+      )}
     </div>
   );
 };

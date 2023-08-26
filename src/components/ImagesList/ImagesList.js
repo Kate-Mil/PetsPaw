@@ -6,8 +6,6 @@ import {
 } from './ImagesList.styled';
 
 export default function ImagesList({ images, onImageClick }) {
-  console.log(images);
-
   const gridAreas = [
     '1 / 1 / 3 / 2',
     '1 / 2 / 2 / 3',

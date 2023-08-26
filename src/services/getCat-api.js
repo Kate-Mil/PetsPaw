@@ -20,14 +20,13 @@ export const getCatsImagesByBreed = async (breed_id, limit) => {
   const { data } = await axios(
     `/images/search?breed_ids=${breed_id}&limit=${limit}`
   );
-  console.log(data);
   return data;
 };
 
-export const getCatsById = async id => {
+export const getCatsInfoById = async id => {
   const { data } = await axios(`/images/${id}`);
-  const [result] = data.breeds.map(el => el.id);
-  return result;
+
+  return data;
 };
 
 export const getCatsForVouting = async () => {
