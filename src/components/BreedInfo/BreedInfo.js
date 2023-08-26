@@ -1,23 +1,32 @@
 export const BreedInfo = ({ breedInfo }) => {
-  console.log(breedInfo);
-  const [data] = breedInfo.breeds;
-  const { name, description, temperament, origin, weight, life_span } = data;
+  const [data] = breedInfo.map(el => el.breeds);
+  const { name, description, temperament, origin, weight, life_span } = data[0];
+
   return (
     <>
-      <img src={breedInfo.url} alt="" />
+      <div>
+        <ul>
+          {breedInfo.map(({ id, url }) => (
+            <li key={id}>
+              <img src={url} alt="" />
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <h1>{name}</h1>
       <h2>{description}</h2>
       <p>
-        Temperament:<span>{temperament}</span>
+        Temperament: <span>{temperament}</span>
       </p>
       <p>
-        Origin:<span>{origin}</span>
+        Origin: <span>{origin}</span>
       </p>
       <p>
-        Weight:<span>{weight.metric} kg</span>
+        Weight: <span>{weight.metric} kg</span>
       </p>
       <p>
-        Life span:<span>{life_span} years</span>
+        Life span: <span>{life_span} years</span>
       </p>
     </>
   );

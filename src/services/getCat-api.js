@@ -23,10 +23,11 @@ export const getCatsImagesByBreed = async (breed_id, limit) => {
   return data;
 };
 
-export const getCatsInfoById = async id => {
+export const getCatsBreedIdByImage = async id => {
   const { data } = await axios(`/images/${id}`);
+  const [result] = data.breeds;
 
-  return data;
+  return result.id;
 };
 
 export const getCatsForVouting = async () => {
