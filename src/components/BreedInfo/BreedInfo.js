@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const BreedInfo = ({ breedInfo }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedBreed, setSelectedBreed] = useState(
+    breedInfo[currentImageIndex]
+  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setSelectedBreed(breedInfo[currentImageIndex]);
+  }, [currentImageIndex, breedInfo]);
 
   const handleNextImage = () => {
     if (currentImageIndex < breedInfo.length - 1) {
@@ -15,8 +24,14 @@ export const BreedInfo = ({ breedInfo }) => {
     }
   };
 
-  const [data] = breedInfo.map(el => el.breeds);
-  const { name, description, temperament, origin, weight, life_span } = data[0];
+  const { breeds, id } = selectedBreed;
+  console.log({ id });
+  const { name, description, temperament, origin, weight, life_span } =
+    breeds[0];
+
+  const handleImageClick = () => {
+    navigate(`/voting/${id}`);
+  };
 
   return (
     <>
@@ -27,11 +42,14 @@ export const BreedInfo = ({ breedInfo }) => {
         >
           Previous
         </button>
-        <img
-          style={{ width: '100%', height: 'avto', objectFit: 'cover' }}
-          src={breedInfo[currentImageIndex].url}
-          alt=""
-        />
+        <NavLink to={`/voting/${id}`}>
+          <img
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            src={selectedBreed.url}
+            alt="cat"
+            onClick={handleImageClick}
+          />
+        </NavLink>
         <button
           onClick={handleNextImage}
           disabled={currentImageIndex === breedInfo.length - 1}

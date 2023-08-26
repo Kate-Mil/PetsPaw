@@ -7,9 +7,10 @@ import Search from '../pages/Search/Search';
 import Likes from '../pages/Likes/Likes';
 import Dislikes from '../pages/Dislikes/Dislikes';
 import Favourites from '../pages/Favourites/Favourites';
+import VotingInfo from '../pages/VotingInfo/VotingInfo';
+import BreedDetails from 'pages/BreedDetails/BreedDetails';
 import { Route, Routes } from 'react-router-dom';
 import GlobalStyle from './GlobalStyles';
-import BreedDetails from 'pages/BreedDetails/BreedDetails';
 
 export const App = () => {
   return (
@@ -21,6 +22,7 @@ export const App = () => {
           <Route path="/breeds" element={<Breeds />} />
           <Route path="/breeds/:id" element={<BreedDetails />} />
           <Route path="/voting" element={<Voting />} />
+          <Route path="/voting/:id" element={<VotingInfo />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/search" element={<Search />} />
           <Route path="/likes" element={<Likes />} />

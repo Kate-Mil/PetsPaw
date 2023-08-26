@@ -1,4 +1,4 @@
-const { PageNavMarkers } = require('components/PageNavMarkers/PageNavMarkers');
+import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 
 const Likes = () => {
   return (
