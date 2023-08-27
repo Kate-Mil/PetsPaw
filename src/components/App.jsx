@@ -11,6 +11,7 @@ import VotingInfo from '../pages/VotingInfo/VotingInfo';
 import BreedDetails from 'pages/BreedDetails/BreedDetails';
 import { Route, Routes } from 'react-router-dom';
 import GlobalStyle from './GlobalStyles';
+import SortedGallery from 'pages/SortedGallery.js/SortedGallery';
 
 export const App = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
           <Route path="/voting" element={<Voting />} />
           <Route path="/voting/:data" element={<VotingInfo />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery/:data" element={<SortedGallery />} />
           <Route path="/search" element={<Search />} />
           <Route path="/likes" element={<Likes />} />
           <Route path="/favourites" element={<Favourites />} />

@@ -1,16 +1,10 @@
-// import React, { useEffect, useState } from 'react';
-// import Loader from 'components/Loader/Loader';
-// import ImagesList from 'components/ImagesList/ImagesList';
-// import { getAllCats } from 'services/getCat-api';
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
-import { OpenModalBtn } from 'components/OpenModalBtn/OpenModalBtn';
-import { Wrapper } from './Gallery.styled';
-import { Outlet } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+// import { getAllVotes } from 'services/getCat-api';
+// import Loader from 'components/Loader/Loader';
 
-const Gallery = () => {
-  // const [breeds, setBreeds] = useState([]);
-  // const [isloading, setIsloading] = useState(false);
-  // const [error, setError] = useState(null);
+const SortedGallery = () => {
   // const [breeds, setBreeds] = useState([]);
   // const [isloading, setIsloading] = useState(false);
   // const [error, setError] = useState(null);
@@ -20,6 +14,9 @@ const Gallery = () => {
   // const [type, setType] = useState('Animated'); //????
   // const [page, setPage] = useState(0);
   // const [has_breeds, setHas_breeds] = useState(1);
+  //   const { data } = useParams();
+  //   const { id, url } = JSON.parse(decodeURIComponent(data));
+  const parentPageTitle = 'gallary';
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -46,17 +43,13 @@ const Gallery = () => {
   // }, [limit, order, has_breeds, type, page, breedId]);
 
   return (
-    <div>
-      <Wrapper>
-        <PageNavMarkers />
-        <OpenModalBtn />
-      </Wrapper>
-      <Outlet />
-      {/* {breeds.length > 0 && <ImagesList images={breeds} />}
+    <>
+      <PageNavMarkers parentPageTitle={parentPageTitle} />
+      <>Hello SortedGallery</>
+      {/*       
       {error && <p>{error.message}</p>}
       {isloading && <Loader />} */}
-    </div>
+    </>
   );
 };
-
-export default Gallery;
+export default SortedGallery;
