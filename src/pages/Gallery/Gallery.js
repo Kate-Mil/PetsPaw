@@ -1,60 +1,76 @@
-// import React, { useEffect, useState } from 'react';
-// import Loader from 'components/Loader/Loader';
-// import ImagesList from 'components/ImagesList/ImagesList';
-// import { getAllCats } from 'services/getCat-api';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
+import ImagesList from 'components/ImagesList/ImagesList';
+import { getAllCats } from 'services/getCat-api';
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 import { OpenModalBtn } from 'components/OpenModalBtn/OpenModalBtn';
-import { Wrapper } from './Gallery.styled';
-import { Outlet } from 'react-router-dom';
+import { BtnWrapper, Wrapper } from './Gallery.styled';
+import { GalleryFilter } from 'components/GallaryFilter/GallaryFilter';
 
 const Gallery = () => {
-  // const [breeds, setBreeds] = useState([]);
-  // const [isloading, setIsloading] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [breeds, setBreeds] = useState([]);
-  // const [isloading, setIsloading] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [limit, setLimit] = useState('10');
-  // const [breedId, setBreedId] = useState('abys'); //??? не срабатывает запрос
-  // const [order, setOrder] = useState('RAND');
-  // const [type, setType] = useState('Animated'); //????
-  // const [page, setPage] = useState(0);
-  // const [has_breeds, setHas_breeds] = useState(1);
+  const location = useLocation(); // Добавил переменную location
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     setIsloading(true);
-  //     try {
-  //       const data = await getAllCats(
-  //         limit,
-  //         order,
-  //         has_breeds,
-  //         type,
-  //         page,
-  //         breedId
-  //       );
-  //       console.log('Fetch AllCats', data);
-  //       setBreeds(data);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     } finally {
-  //       setIsloading(false);
-  //     }
-  //   }
+  const [breeds, setBreeds] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  //   fetchData();
-  // }, [limit, order, has_breeds, type, page, breedId]);
+  function overrideVariablesFromQueryParams(searchParams) {
+    const breedIdParam = searchParams.get('breedId');
+    const orderParam = searchParams.get('order');
+    const hasBreedsParam = searchParams.get('has_breeds');
+    const typeParam = searchParams.get('type');
+    const pageParam = searchParams.get('page');
+
+    const breedId = breedIdParam !== null ? breedIdParam : '';
+    const order = orderParam !== null ? orderParam : 'RAND';
+    const has_breeds = hasBreedsParam !== null ? hasBreedsParam : 1;
+    const type = typeParam !== null ? typeParam : 'Animated';
+    const page = pageParam !== null ? parseInt(pageParam, 10) : 0;
+
+    return {
+      breedId,
+      order,
+      has_breeds,
+      type,
+      page,
+    };
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+      try {
+        const { breedId, order, has_breeds, type, page } =
+          overrideVariablesFromQueryParams(
+            new URLSearchParams(location.search)
+          );
+        const data = await getAllCats(breedId, order, has_breeds, type, page);
+        console.log('Fetch AllCats', data);
+        setBreeds(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [location.search]);
 
   return (
     <div>
       <Wrapper>
         <PageNavMarkers />
-        <OpenModalBtn />
+        <BtnWrapper>
+          <OpenModalBtn />
+        </BtnWrapper>
       </Wrapper>
-      <Outlet />
-      {/* {breeds.length > 0 && <ImagesList images={breeds} />}
+      <GalleryFilter />
+
+      {breeds.length > 0 && <ImagesList images={breeds} />}
       {error && <p>{error.message}</p>}
-      {isloading && <Loader />} */}
+      {isLoading && <Loader />}
     </div>
   );
 };

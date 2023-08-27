@@ -42,7 +42,7 @@ export const Img = styled.svg`
 
 export const List = styled.ul`
   position: absolute;
-  top: 30px;
+  top: 50px;
   left: 0;
   padding-left: 10px;
   background: #f8f8f7;
@@ -58,4 +58,13 @@ export const Item = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  text-transform: none;
+
+  transition: color 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    text-transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  &:hover {
+    text-transform: uppercase;
+    color: #ff868e;
+  }
 `;

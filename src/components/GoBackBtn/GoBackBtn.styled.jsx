@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  padding-top: 20px;
+  padding-right: 20px;
+`;
+
 export const StyledLink = styled.button`
 display: inline-block;
 width: 40px;

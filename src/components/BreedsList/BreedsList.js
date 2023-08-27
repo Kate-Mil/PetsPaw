@@ -56,7 +56,7 @@ export const BreedsList = ({ onClick }) => {
   }, []);
 
   const allBreeds = breeds.map(el => ({ name: el.name, id: el.id }));
-  console.log({ allBreeds });
+
   let selectBreeds;
   if (categoryName === 'All breeds' || categoryName === '') {
     selectBreeds = allBreeds;

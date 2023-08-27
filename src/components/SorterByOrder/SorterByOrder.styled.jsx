@@ -8,11 +8,10 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 226px;
+  width: 290px;
   height: 40px;
   border-radius: 10px;
-  background: #f8f8f7;
-
+  background: #fff;
   cursor: pointer;
 `;
 
@@ -46,10 +45,8 @@ export const List = styled.ul`
   left: 0;
   padding-left: 10px;
   background: #f8f8f7;
-  width: 226px;
+  width: 101px;
   border-radius: 10px;
-  max-height: 340px;
-  overflow: auto;
 
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `;

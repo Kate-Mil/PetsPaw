@@ -22,12 +22,11 @@ const BreedDetails = () => {
     async function fetchData() {
       setIsloading(true);
       try {
-        console.log({ id });
         const breedId = await getCatsBreedIdByImage(id);
         setBreedId(breedId);
         const limit = '100';
         const data = await getCatsImagesByBreed(breedId, limit);
-        console.log('BREED INFO', data);
+
         setBreedInfo(data);
       } catch (error) {
         setError(error.message);

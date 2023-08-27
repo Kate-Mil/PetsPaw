@@ -13,7 +13,6 @@ const SimpleSlider = ({ breedInfo }) => {
     <div>
       <Slider {...settings}>
         {breedInfo.map((info, index) => {
-          console.log(info.url);
           return (
             <div key={index}>
               <img

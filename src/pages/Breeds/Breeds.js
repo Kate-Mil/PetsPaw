@@ -69,49 +69,8 @@ const Breeds = () => {
     setOrder(order);
   };
 
-  // const handleImageClick = async id => {
-  //   try {
-  //     const data = await getCatsBreedIdByImage(id);
-  //     setSearchId(data);
-  //     console.log('SEARCID:', data);
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //   }
-  // };
-
-  // console.log(searchId);
-
-  // const sortedBreeds = [...breeds].sort((a, b) => {
-  //   if (order === 'ASC') {
-  //     return a.name.localeCompare(b.name);
-  //   } else {
-  //     return b.name.localeCompare(a.name);
-  //   }
-  // });
-
   const result = breeds.map(el => el.image).filter(el => el !== undefined);
 
-  // return (
-  //   <div>
-  //     <Wrapper>
-  //       <PageNavMarkers />
-  //       <SortItemsWrapper>
-  //         <BreedsList onClick={handleBreedIdClick} sortOrder={order} />
-  //         <LoadingLimitsList onClick={handleLimitClick} />
-  //         <OrderBtns onClick={handleOrderClick} />
-  //       </SortItemsWrapper>
-  //     </Wrapper>
-  //     {isBreedsData
-  //       ? breeds.length > 0 && (
-  //           <ImagesList images={result} onImageClick={handleImageClick} />
-  //         )
-  //       : breeds.length > 0 && (
-  //           <ImagesList images={breeds} onImageClick={handleImageClick} />
-  //         )}
-  //     {error && <p>{error.message}</p>}
-  //     {isloading && <Loader />}
-  //   </div>
-  // );
   return (
     <div>
       <Wrapper>

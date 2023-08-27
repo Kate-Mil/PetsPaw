@@ -22,9 +22,10 @@ export const StyledLink = styled(NavLink)`
     background: #fbe0dc;
   }
 
-  &:active {
-    background: #ff868e;
-    color: #fff;
+    &.active {
+      background: #ff868e;
+      color: #fff;
+    }
   }
 `;
 
