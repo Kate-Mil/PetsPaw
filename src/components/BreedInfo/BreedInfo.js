@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+// import SimpleSlider from 'components/Slider/Slider';
 
 export const BreedInfo = ({ breedInfo }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
