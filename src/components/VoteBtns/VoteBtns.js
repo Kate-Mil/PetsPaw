@@ -15,6 +15,8 @@ import {
 export const VoteBtns = ({ image_id }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
+  const hasFavouritedKey = `hasFavourited_${image_id}`;
+
   const handleVote = async value => {
     try {
       await postVotes({ image_id, sub_id: 'your_sub_id', value });
@@ -24,18 +26,20 @@ export const VoteBtns = ({ image_id }) => {
   };
 
   const handleFavourite = async () => {
-    try {
-      if (isFavourite) {
-        await deleteFavourites({ image_id });
-      } else {
-        await postFavourites({ image_id });
+    if (!localStorage.getItem(hasFavouritedKey)) {
+      try {
+        if (isFavourite) {
+          await deleteFavourites({ image_id });
+        } else {
+          await postFavourites({ image_id });
+        }
+        setIsFavourite(prev => !prev);
+        localStorage.setItem(hasFavouritedKey, 'true');
+      } catch (error) {
+        console.error('Ошибка при обработке избранного:', error);
       }
-      setIsFavourite(prev => !prev);
-    } catch (error) {
-      console.error('Ошибка при обработке избранного:', error);
     }
   };
-
   return (
     <>
       <Wrapper>
