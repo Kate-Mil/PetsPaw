@@ -23,8 +23,8 @@ const Gallery = () => {
 
     const breedId = breedIdParam !== null ? breedIdParam : '';
     const order = orderParam !== null ? orderParam : 'RAND';
-    const has_breeds = hasBreedsParam !== null ? hasBreedsParam : 1;
-    const type = typeParam !== null ? typeParam : 'Animated';
+    const has_breeds = hasBreedsParam !== null ? hasBreedsParam : 0;
+    const type = typeParam !== null ? typeParam : 'All';
     const page = pageParam !== null ? parseInt(pageParam, 10) : 0;
 
     return {
@@ -35,6 +35,9 @@ const Gallery = () => {
       page,
     };
   }
+  const { type } = overrideVariablesFromQueryParams(
+    new URLSearchParams(location.search)
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -46,6 +49,7 @@ const Gallery = () => {
           );
         const data = await getAllCats(breedId, order, has_breeds, type, page);
         console.log('Fetch AllCats', data);
+
         setBreeds(data);
       } catch (error) {
         setError(error.message);
@@ -57,6 +61,24 @@ const Gallery = () => {
     fetchData();
   }, [location.search]);
 
+  // const filteredImagesByType = breeds
+  //   .filter(item => {
+  //     return item.url.endsWith('.gif');
+  //   })
+  //   .map(item => {
+  //     return { id: item.id, url: item.url };
+  //   });
+
+  let filteredImages;
+  if (type === 'Animated') {
+    filteredImages = breeds.filter(item => item.url.endsWith('.gif'));
+  } else if (type === 'Static') {
+    filteredImages = breeds.filter(item => !item.url.endsWith('.gif'));
+  } else {
+    filteredImages = breeds;
+  }
+  console.log({ type });
+  console.log({ filteredImages });
   return (
     <div>
       <Wrapper>
@@ -67,7 +89,7 @@ const Gallery = () => {
       </Wrapper>
       <GalleryFilter />
 
-      {breeds.length > 0 && <ImagesList images={breeds} />}
+      {filteredImages.length > 0 && <ImagesList images={filteredImages} />}
       {error && <p>{error.message}</p>}
       {isLoading && <Loader />}
     </div>

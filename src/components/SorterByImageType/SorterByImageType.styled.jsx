@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   width: 290px;
   height: 40px;
@@ -15,16 +16,19 @@ export const Wrapper = styled.div`
   cursor: pointer;
 `;
 
+export const SortedCategory = styled.div`
+  padding: 10px;
+`;
+
 export const Title = styled.h1`
   color: #8c8c8c;
-  font-size: 16px;
+  font-size: 10px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
+  font-weight: 500;
+  line-height: 18px;
   padding-left: 10px;
-  padding-top: 8px;
-  padding-bottom: 8px;
   margin: 0;
+  text-transform: uppercase;
 `;
 
 export const CloseBtn = styled.button`
@@ -41,12 +45,14 @@ export const Img = styled.svg`
 
 export const List = styled.ul`
   position: absolute;
-  top: 50px;
+  top: 85px;
   left: 0;
   padding-left: 10px;
   background: #f8f8f7;
-  width: 101px;
+  width: 100%;
   border-radius: 10px;
+  z-index: 1;
+  display: block;
 
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `;

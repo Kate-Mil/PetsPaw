@@ -22,14 +22,13 @@ export const SortedCategory = styled.div`
 
 export const Title = styled.h1`
   color: #8c8c8c;
-  font-size: 16px;
+  font-size: 10px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
+  font-weight: 500;
+  line-height: 18px;
   padding-left: 10px;
-  padding-top: 8px;
-  padding-bottom: 8px;
   margin: 0;
+  text-transform: uppercase;
 `;
 
 export const CloseBtn = styled.button`
