@@ -16,6 +16,10 @@ export const Wrapper = styled.div`
   cursor: pointer;
 `;
 
+export const SortedCategory = styled.div`
+  padding: 10px;
+`;
+
 export const Title = styled.h1`
   color: #8c8c8c;
   font-size: 16px;

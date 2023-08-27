@@ -9,10 +9,12 @@ import {
   Container,
   CloseBtn,
   Img,
+  SortedCategory,
 } from './SorterByOrder.styled';
 
 export const SorterByOrder = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState('');
   const containerRef = useRef(null);
   const listRef = useRef(null);
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ export const SorterByOrder = () => {
   const handleButtonClicked = orderCategory => {
     setSearchParams({ orderCategory });
     navigate(`?order=${encodeURIComponent(orderCategory)}`);
-
+    setSelectedOrder(orderCategory);
     setIsOpen(false);
   };
 
@@ -51,10 +53,24 @@ export const SorterByOrder = () => {
     };
   }, []);
 
+  const findOrderLabelByValue = value => {
+    const matchedOrder = order.find(orderCategoryObj => {
+      const orderCategoryValue = Object.keys(orderCategoryObj)[0];
+      return orderCategoryValue === value;
+    });
+
+    if (matchedOrder) {
+      return Object.values(matchedOrder)[0];
+    }
+
+    return 'Random';
+  };
+
   return (
     <Container>
       <Title>Order</Title>
       <Wrapper ref={containerRef} onClick={toggleDropdown}>
+        <SortedCategory>{findOrderLabelByValue(selectedOrder)}</SortedCategory>
         <CloseBtn type="button" isOpen={isOpen} onClick={toggleDropdown}>
           <Img width="12" height="12">
             <use href={`${sprite}#dropdown`}></use>
