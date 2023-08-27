@@ -30,8 +30,14 @@ export const BreedInfo = ({ breedInfo }) => {
     breeds[0];
 
   const handleImageClick = () => {
-    navigate(`/voting/${id}`);
+    const data = { id, url: selectedBreed.url };
+    const encodedData = encodeURIComponent(JSON.stringify(data));
+    navigate(`/voting/${encodedData}`);
   };
+
+  const encodedData = encodeURIComponent(
+    JSON.stringify({ id, url: selectedBreed.url })
+  );
 
   return (
     <>
@@ -42,7 +48,7 @@ export const BreedInfo = ({ breedInfo }) => {
         >
           Previous
         </button>
-        <NavLink to={`/voting/${id}`}>
+        <NavLink to={`/voting/${encodedData}`}>
           <img
             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
             src={selectedBreed.url}

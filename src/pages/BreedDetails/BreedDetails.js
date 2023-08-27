@@ -8,7 +8,7 @@ import {
   getCatsBreedIdByImage,
 } from 'services/getCat-api';
 
-const { PageNavMarkers } = require('components/PageNavMarkers/PageNavMarkers');
+import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 
 const BreedDetails = () => {
   const [breedInfo, setBreedInfo] = useState(null);
@@ -24,7 +24,6 @@ const BreedDetails = () => {
       try {
         console.log({ id });
         const breedId = await getCatsBreedIdByImage(id);
-        console.log({ breedId });
         setBreedId(breedId);
         const limit = '100';
         const data = await getCatsImagesByBreed(breedId, limit);
