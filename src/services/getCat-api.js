@@ -52,7 +52,7 @@ export const postVotes = async ({ image_id, sub_id, value }) => {
 };
 
 export const getAllFavourites = async () => {
-  const response = await axios.post(`/favourites`);
+  const response = await axios.get(`/favourites`);
   return response.data;
 };
 

@@ -28,7 +28,7 @@ export const VoteBtns = ({ image_id }) => {
       if (isFavourite) {
         await deleteFavourites({ image_id });
       } else {
-        await postFavourites(image_id);
+        await postFavourites({ image_id });
       }
       setIsFavourite(prev => !prev);
     } catch (error) {

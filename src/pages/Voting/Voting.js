@@ -1,39 +1,39 @@
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 import { Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getAllVotes } from 'services/getCat-api';
-import Loader from 'components/Loader/Loader';
-import FeedbackList from 'components/FeedbackList/FeedbackList';
+// import { useState, useEffect } from 'react';
+// import { getAllVotes } from 'services/getCat-api';
+// import Loader from 'components/Loader/Loader';
+// import FeedbackList from 'components/FeedbackList/FeedbackList';
 
 const Voting = () => {
-  const [feedbackInfo, setFeedbackInfo] = useState([]);
-  const [isloading, setIsloading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [feedbackInfo, setFeedbackInfo] = useState([]);
+  // const [isloading, setIsloading] = useState(false);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      setIsloading(true);
-      try {
-        const data = await getAllVotes();
-        console.log(data);
-        setFeedbackInfo(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsloading(false);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     setIsloading(true);
+  //     try {
+  //       const data = await getAllVotes();
+  //       console.log(data);
+  //       setFeedbackInfo(data);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setIsloading(false);
+  //     }
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const lastVotedPuctureUrl = feedbackInfo[0].image.url;
+  // const lastVotedPuctureUrl = feedbackInfo[0].image.url;
 
   return (
     <>
       <PageNavMarkers />
       <Outlet />
-      {feedbackInfo ? (
+      {/* {feedbackInfo ? (
         <div
           style={{
             width: '640px',
@@ -54,14 +54,14 @@ const Voting = () => {
         </div>
       ) : (
         <p>N/A</p>
-      )}
-      {feedbackInfo.length > 0 ? (
+      )} */}
+      {/* {feedbackInfo.length > 0 ? (
         <FeedbackList feedbackInfo={feedbackInfo} />
       ) : (
         `Ooops, there is no reactions so far `
       )}
       {error && <p>{error.message}</p>}
-      {isloading && <Loader />}
+      {isloading && <Loader />} */}
     </>
   );
 };
