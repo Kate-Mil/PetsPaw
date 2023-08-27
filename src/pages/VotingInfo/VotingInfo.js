@@ -1,18 +1,17 @@
 import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { FeadbackList } from '../../components/FeadbackList/FeadbackList';
+import { FeedbackList } from '../../components/FeedbackList/FeedbackList';
 import { VoteBtns } from '../../components/VoteBtns/VoteBtns';
 import { getAllVotes } from 'services/getCat-api';
 import Loader from 'components/Loader/Loader';
 
 const VotingInfo = () => {
-  const [feadbackInfo, setFeadbackInfo] = useState([]);
+  const [feedbackInfo, setFeedbackInfo] = useState([]);
   const [isloading, setIsloading] = useState(false);
   const [error, setError] = useState(null);
   const { data } = useParams();
   const { id, url } = JSON.parse(decodeURIComponent(data));
-  console.log({ id, url });
   const parentPageTitle = 'voting';
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const VotingInfo = () => {
       try {
         const data = await getAllVotes();
         console.log(data);
-        setFeadbackInfo(data);
+        setFeedbackInfo(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -54,8 +53,8 @@ const VotingInfo = () => {
         />
       </div>
       <VoteBtns image_id={id} />
-      {feadbackInfo.length > 0 ? (
-        <FeadbackList featbackInfo={feadbackInfo} />
+      {feedbackInfo.length > 0 ? (
+        <FeedbackList feedbackInfo={feedbackInfo} />
       ) : (
         `There was no reactions found for Image ID: ${id}`
       )}

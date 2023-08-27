@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Wrapper,
   LikeBnt,
@@ -5,9 +6,15 @@ import {
   FavouriteBnt,
   List,
 } from './VoteBtns.styled';
-import { postVotes } from 'services/getCat-api';
+import {
+  postVotes,
+  postFavourites,
+  deleteFavourites,
+} from 'services/getCat-api';
 
 export const VoteBtns = ({ image_id }) => {
+  const [isFavourite, setIsFavourite] = useState(false);
+
   const handleVote = async value => {
     try {
       await postVotes({ image_id, sub_id: 'your_sub_id', value });
@@ -16,13 +23,28 @@ export const VoteBtns = ({ image_id }) => {
     }
   };
 
+  const handleFavourite = async () => {
+    try {
+      if (isFavourite) {
+        await deleteFavourites({ image_id });
+      } else {
+        await postFavourites(image_id);
+      }
+      setIsFavourite(prev => !prev);
+    } catch (error) {
+      console.error('Ошибка при обработке избранного:', error);
+    }
+  };
+
   return (
     <>
       <Wrapper>
         <List>
           <LikeBnt onClick={() => handleVote(1)}>Like</LikeBnt>
-          <DislikeBnt>Favourite</DislikeBnt>
-          <FavouriteBnt onClick={() => handleVote(-1)}>Dislike</FavouriteBnt>
+          <FavouriteBnt onClick={handleFavourite}>
+            {isFavourite ? 'Remove from Favourites' : 'Favourite'}
+          </FavouriteBnt>
+          <DislikeBnt onClick={() => handleVote(-1)}>Dislike</DislikeBnt>
         </List>
       </Wrapper>
     </>

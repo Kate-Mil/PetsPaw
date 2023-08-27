@@ -40,11 +40,28 @@ export const getCatsBreedIdByImage = async id => {
 };
 
 export const getAllVotes = async () => {
-  const { data } = await axios(`votes`);
+  const { data } = await axios(`/votes?order=DESC
+
+  `);
   return data;
 };
 
 export const postVotes = async ({ image_id, sub_id, value }) => {
   const response = await axios.post(`/votes`, { image_id, sub_id, value });
+  return response.data;
+};
+
+export const getAllFavourites = async () => {
+  const response = await axios.post(`/favourites`);
+  return response.data;
+};
+
+export const postFavourites = async ({ image_id, sub_id }) => {
+  const response = await axios.post(`/favourites`, { image_id, sub_id });
+  return response.data;
+};
+
+export const deleteFavourites = async favouriteId => {
+  const response = await axios.delete(`/favourites/${favouriteId}`);
   return response.data;
 };
