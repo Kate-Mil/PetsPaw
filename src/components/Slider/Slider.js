@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-const SimpleSlider = ({ breedInfo, currentImageIndex }) => {
+const SimpleSlider = ({ breedInfo }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -11,16 +11,19 @@ const SimpleSlider = ({ breedInfo, currentImageIndex }) => {
   };
   return (
     <div>
-      <Slider {...settings} initialSlide={currentImageIndex}>
-        {breedInfo.map((info, index) => (
-          <div key={index}>
-            <img
-              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-              src={info.url}
-              alt="cat"
-            />
-          </div>
-        ))}
+      <Slider {...settings}>
+        {breedInfo.map((info, index) => {
+          console.log(info.url);
+          return (
+            <div key={index}>
+              <img
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                src={info.url}
+                alt="cat"
+              />
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );

@@ -18,12 +18,13 @@ import {
   Text,
   Title,
   VotingPicture,
+  Wrapper,
 } from './AppBar.styled';
 
 const AppBar = () => {
   return (
-    <>
-      <AppBarWrapper>
+    <AppBarWrapper>
+      <Wrapper>
         <Logo>
           <NavLink to="/">
             <svg width="104" height="24">
@@ -74,8 +75,8 @@ const AppBar = () => {
             </Styledlink>
           </li>
         </List>
-      </AppBarWrapper>
-    </>
+      </Wrapper>
+    </AppBarWrapper>
   );
 };
 

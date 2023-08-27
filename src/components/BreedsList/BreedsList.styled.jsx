@@ -42,12 +42,14 @@ export const Img = styled.svg`
 
 export const List = styled.ul`
   position: absolute;
-  top: 30px;
+  top: 50px;
   left: 0;
   padding-left: 10px;
   background: #f8f8f7;
   width: 226px;
   border-radius: 10px;
+  max-height: 1000px;
+  overflow: auto;
 
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `;

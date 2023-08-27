@@ -1,6 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  position: sticky;
+  top: 30px;
+`;
+
 export const Logo = styled.div`
   margin-bottom: 80px;
 `;

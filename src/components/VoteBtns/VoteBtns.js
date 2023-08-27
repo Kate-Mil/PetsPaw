@@ -13,9 +13,10 @@ import {
 } from 'services/getCat-api';
 
 export const VoteBtns = ({ image_id }) => {
+  console.log({ image_id });
   const [isFavourite, setIsFavourite] = useState(false);
 
-  const hasFavouritedKey = `hasFavourited_${image_id}`;
+  // const hasFavouritedKey = `hasFavourited_${image_id}`;
 
   const handleVote = async value => {
     try {
@@ -26,18 +27,18 @@ export const VoteBtns = ({ image_id }) => {
   };
 
   const handleFavourite = async () => {
-    if (!localStorage.getItem(hasFavouritedKey)) {
-      try {
-        if (isFavourite) {
-          await deleteFavourites({ image_id });
-        } else {
-          await postFavourites({ image_id });
-        }
-        setIsFavourite(prev => !prev);
-        localStorage.setItem(hasFavouritedKey, 'true');
-      } catch (error) {
-        console.error('Ошибка при обработке избранного:', error);
+    // if (!localStorage.getItem(hasFavouritedKey)) {
+    try {
+      if (isFavourite) {
+        await deleteFavourites({ image_id });
+      } else {
+        await postFavourites({ image_id, sub_id: '123' });
       }
+      setIsFavourite(prev => !prev);
+      // localStorage.setItem(hasFavouritedKey, 'true');
+    } catch (error) {
+      console.error('Ошибка при обработке избранного:', error);
+      // }
     }
   };
   return (

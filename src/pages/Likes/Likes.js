@@ -31,9 +31,16 @@ const Likes = () => {
   return (
     <>
       <PageNavMarkers />
-      {likes.length > 0 ? <ImagesList images={likes} /> : <p>No item found</p>}
-      {error && <p>{error.message}</p>}
-      {isloading && <Loader />}
+      <>
+        {isloading ? (
+          <Loader />
+        ) : likes.length > 0 ? (
+          <ImagesList images={likes} />
+        ) : (
+          <p>No item found</p>
+        )}
+        {error && <p>{error.message}</p>}
+      </>
     </>
   );
 };
