@@ -1,7 +1,7 @@
 import sprite from '../../pictures/sprite.svg';
-import { Button, Img } from './OpenModalBtn';
+import { Button, Img } from './OpenModalBtn.styled';
 
-export const OrderBtns = () => {
+export const OpenModalBtn = () => {
   return (
     <>
       <Button type="button">
