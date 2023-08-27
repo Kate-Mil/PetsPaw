@@ -9,8 +9,7 @@ import { BtnWrapper, Wrapper } from './Gallery.styled';
 import { GalleryFilter } from 'components/GallaryFilter/GallaryFilter';
 
 const Gallery = () => {
-  const location = useLocation(); // Добавил переменную location
-
+  const location = useLocation();
   const [breeds, setBreeds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);

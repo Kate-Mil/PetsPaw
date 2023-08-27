@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   width: 290px;
   height: 40px;
@@ -41,12 +42,14 @@ export const Img = styled.svg`
 
 export const List = styled.ul`
   position: absolute;
-  top: 50px;
+  top: 85px;
   left: 0;
   padding-left: 10px;
   background: #f8f8f7;
-  width: 101px;
+  width: 100%;
   border-radius: 10px;
+  z-index: 1;
+  display: block;
 
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `;
