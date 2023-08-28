@@ -18,3 +18,7 @@ export const Thumb = styled.div`
 width: '290px',
 background: '#fff',
 `;
+
+export const LoadMoreContaimer = styled.div`
+  padding-top: 18px;
+`;

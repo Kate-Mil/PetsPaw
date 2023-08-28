@@ -7,12 +7,14 @@ import { PageNavMarkers } from 'components/PageNavMarkers/PageNavMarkers';
 import { OpenModalBtn } from 'components/OpenModalBtn/OpenModalBtn';
 import { BtnWrapper, Wrapper } from './Gallery.styled';
 import { GalleryFilter } from 'components/GallaryFilter/GallaryFilter';
+import Modal from 'components/Modal/Modal';
 
 const Gallery = () => {
   const location = useLocation();
   const [breeds, setBreeds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   function overrideVariablesFromQueryParams(searchParams) {
     const breedIdParam = searchParams.get('breedId');
@@ -51,7 +53,7 @@ const Gallery = () => {
         const data = await getAllCats(
           breedId,
           order,
-          breedId !== '' ? 1 : has_breeds, // Устанавливаем has_breeds в 1, если breedId не пустая строка
+          breedId !== '' ? 1 : has_breeds,
           page
         );
 
@@ -75,12 +77,16 @@ const Gallery = () => {
     filteredImages = breeds;
   }
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <div>
       <Wrapper>
         <PageNavMarkers />
         <BtnWrapper>
-          <OpenModalBtn />
+          <OpenModalBtn onClick={openModal} />
         </BtnWrapper>
       </Wrapper>
       <GalleryFilter />
@@ -88,6 +94,7 @@ const Gallery = () => {
       {filteredImages.length > 0 && <ImagesList images={filteredImages} />}
       {error && <p>{error.message}</p>}
       {isLoading && <Loader />}
+      {showModal && <Modal onClick={() => setShowModal(false)} />}
     </div>
   );
 };

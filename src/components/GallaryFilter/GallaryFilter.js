@@ -2,7 +2,7 @@ import { PageLimits } from 'components/PageLimits/PageLimits';
 import { SorterByOrder } from 'components/SorterByOrder/SorterByOrder';
 import { LoadMoreBtn } from 'components/LoadMoreBtn/LoadMoreBtn';
 import { SorterByImageType } from 'components/SorterByImageType/SorterByImageType';
-import { Container, Wrapper } from './GalleryFilter.styled';
+import { Container, Wrapper, LoadMoreContaimer } from './GalleryFilter.styled';
 import { GalleryBreedsList } from 'components/GalleryBreedsList/GalleryBreedsList';
 
 export const GalleryFilter = () => {
@@ -15,7 +15,9 @@ export const GalleryFilter = () => {
       <Wrapper>
         <GalleryBreedsList />
         <PageLimits />
-        <LoadMoreBtn />
+        <LoadMoreContaimer>
+          <LoadMoreBtn />
+        </LoadMoreContaimer>
       </Wrapper>
     </Container>
   );

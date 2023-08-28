@@ -6,7 +6,7 @@ export const LoadMoreBtn = () => {
     <>
       <Button type="button">
         <Img width="20" height="20">
-          <use href={`${sprite}#soft-revert`}></use>
+          <use href={`${sprite}#update`}></use>
         </Img>
       </Button>
     </>
