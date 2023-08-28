@@ -15,19 +15,20 @@ const Gallery = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [page, setPage] = useState(1);
 
   function overrideVariablesFromQueryParams(searchParams) {
     const breedIdParam = searchParams.get('breedId');
     const orderParam = searchParams.get('order');
     const hasBreedsParam = searchParams.get('has_breeds');
     const typeParam = searchParams.get('type');
-    const pageParam = searchParams.get('page');
+    const perPageParam = searchParams.get('page');
 
     const breedId = breedIdParam !== null ? breedIdParam : '';
     const order = orderParam !== null ? orderParam : 'RAND';
     const has_breeds = hasBreedsParam !== null ? hasBreedsParam : 0;
     const type = typeParam !== null ? typeParam : 'All';
-    const page = pageParam !== null ? parseInt(pageParam, 10) : 0;
+    const page = perPageParam !== null ? parseInt(perPageParam, 10) : 0;
 
     return {
       breedId,
@@ -81,6 +82,11 @@ const Gallery = () => {
     setShowModal(true);
   };
 
+  const incrementPage = () => {
+    setPage(prevState => prevState + 1);
+  };
+  console.log({ page });
+
   return (
     <div>
       <Wrapper>
@@ -89,7 +95,7 @@ const Gallery = () => {
           <OpenModalBtn onClick={openModal} />
         </BtnWrapper>
       </Wrapper>
-      <GalleryFilter />
+      <GalleryFilter onClick={incrementPage} />
 
       {filteredImages.length > 0 && <ImagesList images={filteredImages} />}
       {error && <p>{error.message}</p>}

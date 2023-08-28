@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import SimpleSlider from 'components/Slider/Slider';
+// import SimpleSlider from 'components/Slider/Slider';
 
 export const BreedInfo = ({ breedInfo }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -50,6 +50,9 @@ export const BreedInfo = ({ breedInfo }) => {
           Previous
         </button>
         <NavLink to={`/voting/${encodedData}`}>
+          {/* <div style={{ height: '500px' }}>
+        <SimpleSlider breedInfo={breedInfo} />
+      </div> */}
           <img
             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
             src={selectedBreed.url}
@@ -79,9 +82,6 @@ export const BreedInfo = ({ breedInfo }) => {
       <p>
         Life span: <span>{life_span} years</span>
       </p>
-      <div style={{ height: '500px' }}>
-        <SimpleSlider breedInfo={breedInfo} />
-      </div>
     </>
   );
 };

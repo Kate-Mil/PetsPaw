@@ -5,7 +5,7 @@ import { SorterByImageType } from 'components/SorterByImageType/SorterByImageTyp
 import { Container, Wrapper, LoadMoreContaimer } from './GalleryFilter.styled';
 import { GalleryBreedsList } from 'components/GalleryBreedsList/GalleryBreedsList';
 
-export const GalleryFilter = () => {
+export const GalleryFilter = ({ onClick }) => {
   return (
     <Container>
       <Wrapper>
@@ -16,7 +16,7 @@ export const GalleryFilter = () => {
         <GalleryBreedsList />
         <PageLimits />
         <LoadMoreContaimer>
-          <LoadMoreBtn />
+          <LoadMoreBtn onClick={onClick} />
         </LoadMoreContaimer>
       </Wrapper>
     </Container>
