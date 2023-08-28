@@ -45,10 +45,10 @@ export const Img = styled.svg`
 
 export const List = styled.ul`
   position: absolute;
-  top: 85px;
+  top: 65px;
   left: 0;
   padding-left: 10px;
-  background: #f8f8f7;
+  background: #fff;
   width: 100%;
   border-radius: 10px;
   z-index: 1;

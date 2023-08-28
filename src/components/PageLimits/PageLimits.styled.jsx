@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   position: relative;
   display: flex;
-  width: 290px;
+  width: 240px;
   height: 40px;
   border-radius: 10px;
   background: #fff;
@@ -48,7 +48,7 @@ export const List = styled.ul`
   top: 65px;
   left: 0;
   padding-left: 10px;
-  background: #f8f8f7;
+  background: #fff;
   width: 100%;
   border-radius: 10px;
   z-index: 1;

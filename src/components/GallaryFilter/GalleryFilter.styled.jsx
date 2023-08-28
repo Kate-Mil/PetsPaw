@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 10px;
-  background-color: red;
+  padding-bottom: 20px;
+  background-color: #f8f8f7;
   border-radius: 20px;
 `;
 

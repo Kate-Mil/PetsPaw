@@ -43,12 +43,17 @@ const Gallery = () => {
     async function fetchData() {
       setIsLoading(true);
       try {
-        const { breedId, order, has_breeds, type, page } =
+        const { breedId, order, has_breeds, page } =
           overrideVariablesFromQueryParams(
             new URLSearchParams(location.search)
           );
-        const data = await getAllCats(breedId, order, has_breeds, type, page);
-        console.log('Fetch AllCats', data);
+
+        const data = await getAllCats(
+          breedId,
+          order,
+          breedId !== '' ? 1 : has_breeds, // Устанавливаем has_breeds в 1, если breedId не пустая строка
+          page
+        );
 
         setBreeds(data);
       } catch (error) {
@@ -61,14 +66,6 @@ const Gallery = () => {
     fetchData();
   }, [location.search]);
 
-  // const filteredImagesByType = breeds
-  //   .filter(item => {
-  //     return item.url.endsWith('.gif');
-  //   })
-  //   .map(item => {
-  //     return { id: item.id, url: item.url };
-  //   });
-
   let filteredImages;
   if (type === 'Animated') {
     filteredImages = breeds.filter(item => item.url.endsWith('.gif'));
@@ -77,8 +74,7 @@ const Gallery = () => {
   } else {
     filteredImages = breeds;
   }
-  console.log({ type });
-  console.log({ filteredImages });
+
   return (
     <div>
       <Wrapper>
